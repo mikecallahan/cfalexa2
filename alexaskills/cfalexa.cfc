@@ -1,3 +1,16 @@
+<!---
+This is the engine that drives Amazon Alexa skill building with ColdFusion.  This file
+handles the incoming JSON from Amazon and routes processing to your custom skills
+functions.  It manages the proper JSON output formatting, maintains session variables
+you want to track, stores the last response to be used for the "repeat" function,
+manages info for cards (what gets displayed on the  mobile app and devices with screens),
+and provides randomization functions for use in your skills to help keep things
+from being static and routine.
+
+Special thanks to Steve Drucker who created the original version of this file that
+can be found at https://github.com/sdruckerfig/CF-Alexa/blob/master/Alexa.cfc.  
+--->
+
 <cfcomponent>
 
 	<!--- retrieve the json packet that Amazon sent us --->
