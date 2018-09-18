@@ -74,7 +74,7 @@ can be found at https://github.com/sdruckerfig/CF-Alexa/blob/master/Alexa.cfc.
 
 		<!--- there are 3 primary types of requests: LaunchRequest, IntentRequest, SessionEndedRequest --->
    		<cfswitch expression="#local.jsonInput.request.type#">
-		   	<cfcase value="LaunchRequest">
+			<cfcase value="LaunchRequest">
 				
 				<!--- run the launchRequest intent and send session variables --->
 				<cfset launchRequest()>
@@ -118,8 +118,7 @@ can be found at https://github.com/sdruckerfig/CF-Alexa/blob/master/Alexa.cfc.
 					</cfif>
 				</cfif>
 				<!--- send a properly formated json response back to Alexa --->
-				<cfreturn getResponse()>
-				
+				<cfreturn getResponse()>	
 			</cfcase>
 
 			<!--- 
@@ -267,6 +266,5 @@ can be found at https://github.com/sdruckerfig/CF-Alexa/blob/master/Alexa.cfc.
 		<cfset randomItem.text=arguments.picklist[randomItem.number]>
 		<cfreturn randomItem>
 	</cffunction>
-
 
 </cfcomponent>
