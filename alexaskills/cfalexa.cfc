@@ -86,7 +86,7 @@ can be found at https://github.com/sdruckerfig/CF-Alexa/blob/master/Alexa.cfc.
 
    	  		<cfcase value="IntentRequest">
 				 <!--- get the name of the intent from the request info sent by Alexa --->
-                <cfset local.methodName = local.jsonInput.request.intent.name>
+				 <cfset local.methodName = local.jsonInput.request.intent.name>
 
 				<!--- check to see if Alexa sent any slots --->
 				<cfif structkeyexists(local.jsonInput.request.intent,"slots")>
