@@ -18,5 +18,3 @@ Using the ColdFusion voice template provided and your favorite IDE, simply modif
 
 ## Run
 That's it!  Save your code and try out your new skill on any of your Alexa devices.
-
-
