@@ -2,7 +2,7 @@
 
 
 ## Getting Started
-Find complete instructions in the instructions.pdf.
+Find complete instructions in the ##instructions.pdf##.
 
 ## Download
 Easily download <cfalexa> and place in your web root on a ColdFusion server accessible to the public.
