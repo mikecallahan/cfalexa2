@@ -21,8 +21,8 @@
 	}>
 
 	<!--- replace the value of skillID with the applicationID of YOUR skill 
-	from the developers portal --->
-	<cfset this.skillID = "amzn1.ask.skill.eb997d6e-ba12-49aa-9fc5-ceba5bca9cc3">
+	from the developers portal.  Do not include the curly braces! --->
+	<cfset this.skillID = "{put your skill ID here}">
 
 	<!--- launchRequest is required and does not need to be identified above, 
 	DO NOT REMOVE --->
