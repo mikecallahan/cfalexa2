@@ -6,11 +6,6 @@
 	attribute below defines the location.  The ".cfc" is implied and therefore not 
 	necessary to put at the end of cfalexa.  The use of "extends" allows this 
 	component to inherit functions from the parent (cfalexa.cfc). 
-
-	Special thanks to Steve Drucker for his github repository that he posted in 2017 containing
-	the original code concepts for building Alexa skills using ColdFusion.
-
-	https://github.com/sdruckerfig/CF-Alexa
 --->
 
 <cfcomponent extends="/alexaskills/cfalexa" >
