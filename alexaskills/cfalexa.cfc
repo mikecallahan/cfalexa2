@@ -47,7 +47,7 @@ can be found at https://github.com/sdruckerfig/CF-Alexa/blob/master/Alexa.cfc.
 	<!--- 
 	This is the starting point.  Set the endpoint in amazon developer dashboard to: 
 	https://{your web address}/cfalexa/{foldername}/{filename containing your skill}.cfc?method=start  
-	Example: https://www.yoursite.com/cfalexa/voice-template/voicetemplate.cfc?method=start    
+	Example: https://www.yoursite.com/alexaskills/voice-template/voicetemplate.cfc?method=start    
 	--->
 	<cffunction name="start" access="remote" returntype="struct" returnformat="json">
 		<!--- pull in the json input packet sent from Alexa into a variable called jsonInput --->
@@ -96,13 +96,6 @@ can be found at https://github.com/sdruckerfig/CF-Alexa/blob/master/Alexa.cfc.
 				<!--- set target method name from this.intents --->
 				<cfset cfcMethod = variables[this.intents[local.methodName]]>
 				
-				<!--- why not just use local.methodname? --->
-				<!--- because we want the actual object --->
-				<!---
-				<cfdump var="#local.methodName#"><br><br>
-				<cfdump var="#cfcMethod#"><cfabort>
-				--->
-
 				<!--- run the intent/method --->
 				<cfif isDefined("local.jsonInput.session.attributes")>
 					<cfif isDefined("local.slots")>
@@ -134,7 +127,6 @@ can be found at https://github.com/sdruckerfig/CF-Alexa/blob/master/Alexa.cfc.
 	<!--- most used functions --->
 	<cffunction name="say" access="public" returntype="void">
 		<cfargument name="text" required="yes">
-		<!---<cfset this.jsonOutput.response.outputSpeech.ssml = this.jsonOutput.response.outputSpeech.ssml & "<p>" & arguments.text & "</p>">--->
 		<cfset this.jsonOutput.response.outputSpeech.ssml = this.jsonOutput.response.outputSpeech.ssml & arguments.text>
 	</cffunction>
 
@@ -217,7 +209,6 @@ can be found at https://github.com/sdruckerfig/CF-Alexa/blob/master/Alexa.cfc.
 			<cfloop condition = "isGood LESS THAN 1">
 				<cfset randomItem.number=randRange(1,listlen(arguments.picklist,";"))>
 				<cfif isDefined("this.jsonOutput.sessionAttributes.duplicatesinlist") and len(this.jsonOutput.sessionAttributes.duplicatesinlist)>
-					<!---<cfset setSessionVariable("length","#len(this.jsonOutput.sessionAttributes.duplicatelist)#")>--->
 					<cfif listContains(this.jsonOutput.sessionAttributes.duplicatesinlist, "#randomItem.number#") IS "0">
 						<cfset isGood = 1>
 						<cfset setSessionVariable("duplicatesinlist","#listAppend(this.jsonOutput.sessionAttributes.duplicatesinlist,randomItem.number)#")>
@@ -248,7 +239,6 @@ can be found at https://github.com/sdruckerfig/CF-Alexa/blob/master/Alexa.cfc.
 			<cfloop condition = "isGood LESS THAN 1">
 				<cfset randomItem.number=randRange(1,arraylen(arguments.picklist))>
 				<cfif isDefined("this.jsonOutput.sessionAttributes.duplicatesinarray") and len(this.jsonOutput.sessionAttributes.duplicatesinarray)>
-					<!---<cfset setSessionVariable("length","#len(this.jsonOutput.sessionAttributes.duplicatelist)#")>--->
 					<cfif listContains(this.jsonOutput.sessionAttributes.duplicatesinarray, "#randomItem.number#") IS "0">
 						<cfset isGood = 1>
 						<cfset setSessionVariable("duplicatesinarray","#listAppend(this.jsonOutput.sessionAttributes.duplicatesinarray,randomItem.number)#")>
