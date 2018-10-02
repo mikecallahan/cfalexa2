@@ -1,10 +1,17 @@
-<!--- This is the starting point.  Set the endpoint in amazon developer dashboard to: 
+<!--- 
+	This is the starting point.  Set the endpoint in amazon developer dashboard to: 
 	https://{your web address}/alexaskills/{foldername}/{filename containing your skill}.cfc?method=start  
 	
 	The start method resides up one folder level in cfalexa.cfc.  The "extends" 
 	attribute below defines the location.  The ".cfc" is implied and therefore not 
 	necessary to put at the end of cfalexa.  The use of "extends" allows this 
-	component to inherit functions from the parent (cfalexa.cfc). --->
+	component to inherit functions from the parent (cfalexa.cfc). 
+
+	Special thanks to Steve Drucker for his github repository that he posted in 2017 containing
+	the original code concepts for building Alexa skills using ColdFusion.
+
+	https://github.com/sdruckerfig/CF-Alexa
+--->
 
 <cfcomponent extends="/alexaskills/cfalexa" >
 	<!--- define your intents and function names here. 

@@ -158,9 +158,19 @@ can be found at https://github.com/sdruckerfig/CF-Alexa/blob/master/Alexa.cfc.
 		<cfreturn local.jsonOutput>
 	</cffunction>
 
-	<cffunction name="endSession" access="public" returntype="void">
-		<cfset this.jsonOutput.response.shouldEndSession = true>
-	</cffunction>
+
+
+<cffunction name="endSession" access="public" returntype="void">
+<cfset this.jsonOutput.response.shouldEndSession = true>
+</cffunction>
+
+
+
+
+
+
+
+
 
 	<!--- for cards --->
 	<cffunction name="setTitle" access="public" returntype="void">
@@ -205,65 +215,14 @@ can be found at https://github.com/sdruckerfig/CF-Alexa/blob/master/Alexa.cfc.
 		randomItem.number - the random number that was selected
 		randomItem.text - the text from the list corresponding to the random number
 	--->
-	<cffunction name="randomFromList" access="public" returntype="struct">
-		<cfargument name="picklist" type="string" required="yes">
-		<cfargument name="filterduplicates" type="string" required="no" default="no">
 
-		<cfif arguments.filterduplicates IS "yes">
-			<cfset isGood = 0>
-			<cfif isDefined("this.jsonOutput.sessionAttributes.duplicatesinlist") AND listlen(arguments.picklist,";") EQUALS listlen(this.jsonOutput.sessionAttributes.duplicatesinlist)> 
-				<cfset structDelete(this.jsonOutput.sessionAttributes,"duplicatesinlist")>
-			</cfif>
-			<cfloop condition = "isGood LESS THAN 1">
-				<cfset randomItem.number=randRange(1,listlen(arguments.picklist,";"))>
-				<cfif isDefined("this.jsonOutput.sessionAttributes.duplicatesinlist") and len(this.jsonOutput.sessionAttributes.duplicatesinlist)>
-					<!---<cfset setSessionVariable("length","#len(this.jsonOutput.sessionAttributes.duplicatelist)#")>--->
-					<cfif listContains(this.jsonOutput.sessionAttributes.duplicatesinlist, "#randomItem.number#") IS "0">
-						<cfset isGood = 1>
-						<cfset setSessionVariable("duplicatesinlist","#listAppend(this.jsonOutput.sessionAttributes.duplicatesinlist,randomItem.number)#")>
-					<cfelse>
-						<cfset setSessionVariable("inlistcontains","loop again")>
-					</cfif>
-				<cfelse>
-					<cfset isGood = 1>
-					<cfset setSessionVariable("duplicatesinlist","#randomItem.number#")>
-				</cfif>
-			</cfloop>
-		<cfelse>
-			<cfset randomItem.number=randRange(1,listlen(arguments.picklist,";"))>
-		</cfif>
-		<cfset randomItem.text=listGetAt(arguments.picklist,randomItem.number,";")>
+	<cffunction name="randomFromList" access="public" returntype="struct">
+		...
 		<cfreturn randomItem>
 	</cffunction>
 
 	<cffunction name="randomFromArray" access="public" returntype="struct">
-		<cfargument name="picklist" type="array" required="yes">
-		<cfargument name="filterduplicates" type="string" required="no" default="no">
-
-		<cfif arguments.filterduplicates IS "yes">
-			<cfset isGood = 0>
-			<cfif isDefined("this.jsonOutput.sessionAttributes.duplicatesinarray") AND arraylen(arguments.picklist) EQUALS listlen(this.jsonOutput.sessionAttributes.duplicatesinarray)> 
-				<cfset structDelete(this.jsonOutput.sessionAttributes,"duplicatesinarray")>
-			</cfif>
-			<cfloop condition = "isGood LESS THAN 1">
-				<cfset randomItem.number=randRange(1,arraylen(arguments.picklist))>
-				<cfif isDefined("this.jsonOutput.sessionAttributes.duplicatesinarray") and len(this.jsonOutput.sessionAttributes.duplicatesinarray)>
-					<!---<cfset setSessionVariable("length","#len(this.jsonOutput.sessionAttributes.duplicatelist)#")>--->
-					<cfif listContains(this.jsonOutput.sessionAttributes.duplicatesinarray, "#randomItem.number#") IS "0">
-						<cfset isGood = 1>
-						<cfset setSessionVariable("duplicatesinarray","#listAppend(this.jsonOutput.sessionAttributes.duplicatesinarray,randomItem.number)#")>
-					<cfelse>
-						<cfset setSessionVariable("inlistcontains","loop again")>
-					</cfif>
-				<cfelse>
-					<cfset isGood = 1>
-					<cfset setSessionVariable("duplicatesinarray","#randomItem.number#")>
-				</cfif>
-			</cfloop>
-		<cfelse>
-			<cfset randomItem.number=randRange(1,arraylen(arguments.picklist))>
-		</cfif>
-		<cfset randomItem.text=arguments.picklist[randomItem.number]>
+		...
 		<cfreturn randomItem>
 	</cffunction>
 
