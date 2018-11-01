@@ -3,14 +3,13 @@
       "publishingInformation": {
         "locales": {
           "en-US": {
-            "summary": "Sample Short Description",
+            "summary": "cfalexa starter template",
             "examplePhrases": [
-              "Alexa open hello world",
-              "Alexa tell hello world I am Jeff",
-              "Alexa tell hello world my name is Peter"
+              "Alexa open my voice template",
+              "Alexa launch my voice template"
             ],
             "name": "t6",
-            "description": "Sample Full Description"
+            "description": "Voice Template"
           }
         },
         "isAvailableWorldwide": true,
