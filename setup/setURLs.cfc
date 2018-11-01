@@ -12,7 +12,12 @@ component {
 		//  open .ask/config, get skillID, and then find location of url and replace ngrokurl  
 		configcontent = fileRead("#tPath#/.ask/config");
 		tStart = find("https://",configcontent);
-		tEnd = find("/alexa",configcontent);
+		if (tStart GT 0) {
+			tEnd = find("/alexa",configcontent);
+		}
+		else {
+			replacenocase(configcontent,"ask-custom-cfalexa-default",ngrokurl);
+		}
 		replacethis = mid(configcontent, tStart, tEnd-tStart);
 		newfile = replacenocase(configcontent,replacethis,ngrokurl);
 		fileWrite(expandPath("#tPath#/.ask/config"), newfile);
