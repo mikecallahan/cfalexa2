@@ -6,10 +6,9 @@ component {
 		tStart = find("amzn",configcontent);
 		tEnd = find("was_cloned",configcontent);
 		tSkillID = mid(configcontent, tStart, tEnd-tStart-10);
-		tNewPath = replacenocase(tPath,"setup","alexaskills/voice_template");
-		vtcontent = fileRead("#tPath#alexaskills/voicetemplate.cfc");
+		vtcontent = fileRead("#tPath#alexaskills/voice_template/voicetemplate.cfc");
 		newvoicetemplate = replacenocase(vtcontent,"{put your skill id here}",tSkillID);
-		fileWrite("#tPath#alexaskills/voicetemplate.cfc", newvoicetemplate);
+		fileWrite("#tPath#alexaskills/voice_template/voicetemplate.cfc", newvoicetemplate);
 	}
 
 }
