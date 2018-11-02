@@ -1,10 +1,9 @@
 component {
 
 	public void function run() {
-		tPath = GetDirectoryFromPath(GetCurrentTemplatePath());
 
 		//  open share.txt, find the url and set to a variable
-		sharecontent = fileRead("#tPath#/share.txt");
+		sharecontent = fileRead("share.txt");
 		tStart = find("https://",sharecontent);
 		tEnd = find(".io",sharecontent);
 		ngrokurl = mid(sharecontent, tStart, tEnd-tStart+3);
