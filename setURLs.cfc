@@ -9,7 +9,7 @@ component {
 		ngrokurl = mid(sharecontent, tStart, tEnd-tStart+3);
 
 		//  open .ask/config, get skillID, and then find location of url and replace ngrokurl  
-		configcontent = fileRead("#tPath#/.ask/config");
+		configcontent = fileRead("/.ask/config");
 		tStart = find("https://",configcontent);
 		if (tStart GT 0) {
 			tEnd = find("/alexa",configcontent);
@@ -19,15 +19,15 @@ component {
 		}
 		replacethis = mid(configcontent, tStart, tEnd-tStart);
 		newfile = replacenocase(configcontent,replacethis,ngrokurl);
-		fileWrite(expandPath("#tPath#/.ask/config"), newfile);
+		fileWrite(expandPath("/.ask/config"), newfile);
 
 		//  open skill.json, find location of url and replace with ngrokurl 
-		shareurl = fileRead("#tPath#/skill.json");
+		shareurl = fileRead("skill.json");
 		tStart = find("https://",shareurl);
 		tEnd = find("/alexa",shareurl);
 		replacethis = mid(shareurl, tStart, tEnd-tStart);
 		newfile = replacenocase(shareurl,replacethis,ngrokurl);
-		fileWrite(expandPath("#tPath#/skill.json"), newfile);
+		fileWrite(expandPath("skill.json"), newfile);
 	}
 
 }
