@@ -29,7 +29,7 @@ component {
 		tEnd = find("/alexa",shareurl);
 		replacethis = mid(shareurl, tStart, tEnd-tStart);
 		newfile1 = replacenocase(shareurl,replacethis,ngrokurl);
-		newfile = replacenocase(newfile1,'"cfalexa",', '"voicetemplate"');
+		newfile = replacenocase(newfile1,'"cfalexa",', '"t7"');
 		fileWrite("#tPath#skill.json", newfile);
 
 	}
